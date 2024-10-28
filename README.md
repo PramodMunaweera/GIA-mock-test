@@ -1,4 +1,4 @@
-# GIA Mock Test
+# GIA Practice Test
 General Intelligence Assessment (GIA) is a speed test that measures your ability to quickly learn, comprehend and retain information.
 
 **Disclaimer**
