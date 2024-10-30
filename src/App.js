@@ -184,14 +184,14 @@ const App = () => {
                       </h1>
                       <div className="bg-light p-4 rounded-3 mb-4">
                         <h5 className="mb-3">Test Overview</h5>
-                        <p className="text-muted mb-0">
+                        <p className="text-muted mb-0 fs-6">
                           This assessment consists of 5 unique categories
                           designed to evaluate different cognitive abilities:
                         </p>
                         <ul className="list-unstyled mt-3">
                           {Object.values(TestCategories).map((category) => (
                             <li key={category} className="mb-2">
-                              <span className="badge bg-primary me-2 text-capitalize">
+                              <span className="badge bg-primary me-2 text-capitalize fs-6">
                                 {category.replace(/([A-Z])/g, " $1").trim()}
                               </span>
                             </li>
@@ -213,7 +213,7 @@ const App = () => {
                         {currentCategory.replace(/([A-Z])/g, " $1").trim()}
                       </h2>
                       <div className="bg-light p-4 rounded-3 mb-4">
-                        <p className="mb-0">
+                        <p className="mb-0 fs-5">
                           {getCategoryDescription(currentCategory)}
                         </p>
                       </div>
@@ -253,14 +253,14 @@ const App = () => {
                       {currentCategory === TestCategories.REASONING &&
                         showStatement && (
                           <div>
-                            <p className="mb-4">
+                            <p className="mb-4 fs-5">
                               {
                                 questions[currentCategory][currentQuestionIndex]
                                   .statement
                               }
                             </p>
                             <button
-                              className="btn btn-secondary"
+                              className="btn btn-primary btn-lg"
                               onClick={() => setShowStatement(false)}
                             >
                               Click when ready
@@ -272,7 +272,7 @@ const App = () => {
                         currentCategory !== TestCategories.REASONING) && (
                         <div>
                           {currentCategory === TestCategories.REASONING && (
-                            <p className="mb-5">
+                            <p className="mb-5 fs-5">
                               {
                                 questions[currentCategory][currentQuestionIndex]
                                   .question
@@ -287,7 +287,7 @@ const App = () => {
                                 className="mb-2"
                                 style={{
                                   fontFamily: "monospace",
-                                  fontSize: "1.2em",
+                                  fontSize: "1.5em",
                                 }}
                               >
                                 {questions[currentCategory][
@@ -301,7 +301,7 @@ const App = () => {
                               <div
                                 style={{
                                   fontFamily: "monospace",
-                                  fontSize: "1.2em",
+                                  fontSize: "1.5em",
                                 }}
                               >
                                 {questions[currentCategory][
@@ -324,10 +324,14 @@ const App = () => {
                           )}
 
                           {currentCategory === TestCategories.WORD_MEANING && (
-                            <div className="mb-5 fs-4">
+                            <div className="mb-5 d-flex justify-content-center gap-3">
                               {questions[currentCategory][
                                 currentQuestionIndex
-                              ].words.join(" ")}
+                              ].words.map((word, index) => (
+                                <div key={index} className="border p-2 fs-5">
+                                  {word}
+                                </div>
+                              ))}
                             </div>
                           )}
 
@@ -342,23 +346,23 @@ const App = () => {
                                   className="d-flex flex-column align-items-center"
                                 >
                                   <svg
-                                    width="40"
-                                    height="80"
-                                    viewBox="0 0 40 80"
+                                    width="80"
+                                    height="160"
+                                    viewBox="0 0 80 160"
                                   >
                                     <LetterShape
                                       letter={pair.shape1.letter}
                                       rotation={pair.shape1.rotation}
                                       flip={pair.shape1.flip}
-                                      x={20}
-                                      y={20}
+                                      x={40}
+                                      y={40}
                                     />
                                     <LetterShape
                                       letter={pair.shape2.letter}
                                       rotation={pair.shape2.rotation}
                                       flip={pair.shape2.flip}
-                                      x={20}
-                                      y={60}
+                                      x={40}
+                                      y={120}
                                     />
                                   </svg>
                                 </div>
@@ -420,7 +424,7 @@ const App = () => {
 
                             {currentCategory ===
                               TestCategories.SPATIAL_VISUALIZATION &&
-                              [0, 1, 2, 3].map((num) => (
+                              [0, 1, 2].map((num) => (
                                 <button
                                   key={num}
                                   className="btn btn-primary btn-lg px-4"
